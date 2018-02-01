@@ -38,9 +38,22 @@
         <property name="minPoolSize" value="${c3p0.min.pool.size}"/>
     </bean>
 
+    <!--Hibernate configurations-->
+    <!--<bean id="dataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${mysql.dialog.connection.driver.class}"/>
+        <property name="jdbcUrl" value="${mysql.dialog.connection.url}"/>
+        <property name="user" value="${mysql.dialog.connection.username}"/>
+        <property name="password" value="${mysql.dialog.connection.password}"/>
+        &lt;!&ndash;C3P0 properties&ndash;&gt;
+        <property name="acquireIncrement" value="${c3p0.acquire.increment}"/>
+        <property name="idleConnectionTestPeriod" value="${c3p0.max.idle.time}"/>
+        <property name="maxPoolSize" value="${c3p0.max.pool.size}"/>
+        <property name="minPoolSize" value="${c3p0.min.pool.size}"/>
+    </bean>-->
+
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="beyondm.multidb.model.dialog"/>
+        <property name="packagesToScan" value="beyondm.multidb.model.mobitel"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
@@ -50,10 +63,27 @@
         </property>
     </bean>
 
+ <!--   <bean id="sessionFactory1" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource1"/>
+        <property name="packagesToScan" value="beyondm.multidb.model.dialog"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>-->
+
     <!-- Transaction Manager -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!-- Transaction Manager -->
+<!--    <bean id="transactionManager1" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory1"/>
+    </bean>-->
 
     <mvc:interceptors>
         <bean class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
@@ -61,8 +91,15 @@
                 <ref local="sessionFactory" />
             </property>
         </bean>
+
+<!--        <bean class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
+            <property name="sessionFactory">
+                <ref local="sessionFactory1" />
+            </property>
+        </bean>-->
     </mvc:interceptors>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
+<!--    <tx:annotation-driven transaction-manager="transactionManager1"/>-->
 
 </beans>

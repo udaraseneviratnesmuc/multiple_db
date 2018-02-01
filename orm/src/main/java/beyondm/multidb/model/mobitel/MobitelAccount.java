@@ -1,10 +1,11 @@
 package beyondm.multidb.model.mobitel;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name="mobitel_account")
-public class MobitelAccount {
+@Table(name = "mobitel_account")
+public class MobitelAccount implements Serializable {
 
     private static final long serialVersionUID = 7907557904305936381L;
 
