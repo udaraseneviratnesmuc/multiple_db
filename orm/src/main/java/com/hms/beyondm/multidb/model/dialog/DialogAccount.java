@@ -14,7 +14,7 @@ public class DialogAccount implements Serializable{
     @Column(name = "id")
     private long id;
 
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(name = "username", nullable = false)
     private String name;
 
     @Column(name = "msisdn", nullable = false)

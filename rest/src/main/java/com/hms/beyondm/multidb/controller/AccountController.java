@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/mobitel")
+@RequestMapping(value = "/createAccount")
 public class AccountController {
 
     @Autowired
     MobitelAccountService mobitelAccountService;
 
-    @RequestMapping(value = "/createAccount", method = RequestMethod.GET)
+    @RequestMapping(value = "/mobitel", method = RequestMethod.GET)
     public void createMobitelAccount(){
 
         System.out.println("################ Hit the Controller ##############");
@@ -23,6 +23,19 @@ public class AccountController {
 
         mobitelAccount.setMsisdn("0718143637");
         mobitelAccount.setName("Udara");
+
+        mobitelAccountService.saveAccount(mobitelAccount);
+    }
+
+    @RequestMapping(value = "/dialog", method = RequestMethod.GET)
+    public void createDialogAccount(){
+
+        System.out.println("################ Hit the Controller ##############");
+
+        MobitelAccount mobitelAccount = new MobitelAccount();
+
+        mobitelAccount.setMsisdn("0778143637");
+        mobitelAccount.setName("Niroshan");
 
         mobitelAccountService.saveAccount(mobitelAccount);
     }
