@@ -36,7 +36,7 @@
     </mvc:interceptors>
 
 
-    <!--Hibernate configurations-->
+    <!--Hibernate configurations for DB Mobitel-->
     <bean id="dataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${mysql.mobitel.connection.driver.class}"/>
         <property name="jdbcUrl" value="${mysql.mobitel.connection.url}"/>
@@ -49,7 +49,7 @@
         <property name="minPoolSize" value="${c3p0.min.pool.size}"/>
     </bean>
 
-    <!--Hibernate configurations-->
+    <!--Hibernate configurations for DB Dialog-->
     <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${mysql.dialog.connection.driver.class}"/>
         <property name="jdbcUrl" value="${mysql.dialog.connection.url}"/>
@@ -62,7 +62,8 @@
         <property name="minPoolSize" value="${c3p0.min.pool.size}"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <!--Session factory configurations for DB Mobitel-->
+    <bean id="sessionFactory1" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource1"/>
         <property name="packagesToScan" value="com.hms.beyondm.multidb.model.mobitel"/>
         <property name="hibernateProperties">
@@ -72,8 +73,10 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
+        <qualifier value="sessionFactory1"/>
     </bean>
 
+    <!--Session factory configurations for DB Dialog-->
     <bean id="sessionFactory2" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource2"/>
         <property name="packagesToScan" value="com.hms.beyondm.multidb.model.dialog"/>
@@ -89,7 +92,7 @@
 
     <!-- Transaction Manager -->
     <bean id="transactionManager1" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="sessionFactory1"/>
         <qualifier value="transactionManager1"/>
     </bean>
 
@@ -101,7 +104,7 @@
     <mvc:interceptors>
         <bean class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
             <property name="sessionFactory">
-                <ref local="sessionFactory" />
+                <ref local="sessionFactory1" />
             </property>
         </bean>
 

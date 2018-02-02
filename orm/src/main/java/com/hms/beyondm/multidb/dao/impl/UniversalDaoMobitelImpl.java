@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class UniversalDaoMobitelImpl<T extends Serializable> implements UniversalDao<T> {
 
     @Autowired
-    @Qualifier("sessionFactory")
+    @Qualifier("sessionFactory1")
     protected SessionFactory sessionFactory;
 
     public Long save(T object) {
