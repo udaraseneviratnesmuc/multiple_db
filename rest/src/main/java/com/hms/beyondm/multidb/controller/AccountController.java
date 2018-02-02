@@ -1,6 +1,8 @@
 package com.hms.beyondm.multidb.controller;
 
+import com.hms.beyondm.multidb.model.dialog.DialogAccount;
 import com.hms.beyondm.multidb.model.mobitel.MobitelAccount;
+import com.hms.beyondm.multidb.service.dialog.DialogAccountService;
 import com.hms.beyondm.multidb.service.mobitel.MobitelAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,9 @@ public class AccountController {
 
     @Autowired
     MobitelAccountService mobitelAccountService;
+
+    @Autowired
+    DialogAccountService dialogAccountService;
 
     @RequestMapping(value = "/mobitel", method = RequestMethod.GET)
     public void createMobitelAccount(){
@@ -32,11 +37,11 @@ public class AccountController {
 
         System.out.println("################ Hit the Controller ##############");
 
-        MobitelAccount mobitelAccount = new MobitelAccount();
+        DialogAccount dialogAccount = new DialogAccount();
 
-        mobitelAccount.setMsisdn("0778143637");
-        mobitelAccount.setName("Niroshan");
+        dialogAccount.setMsisdn("0778143637");
+        dialogAccount.setName("Niroshan");
 
-        mobitelAccountService.saveAccount(mobitelAccount);
+        dialogAccountService.saveAccount(dialogAccount);
     }
 }

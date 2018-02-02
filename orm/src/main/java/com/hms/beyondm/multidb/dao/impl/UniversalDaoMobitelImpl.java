@@ -4,12 +4,14 @@ import com.hms.beyondm.multidb.dao.UniversalDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.io.Serializable;
 
-public class UniversalDaoImpl<T extends Serializable> implements UniversalDao<T> {
+public class UniversalDaoMobitelImpl<T extends Serializable> implements UniversalDao<T> {
 
     @Autowired
+    @Qualifier("sessionFactory")
     protected SessionFactory sessionFactory;
 
     public Long save(T object) {

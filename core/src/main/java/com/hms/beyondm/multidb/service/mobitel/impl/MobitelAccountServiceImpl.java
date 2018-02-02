@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(value="transactionManager")
 @Service("mobitelAccountService")
 public class MobitelAccountServiceImpl implements MobitelAccountService{
 
     @Autowired
     MobitelDao mobitelDao;
 
+    @Transactional("transactionManager1")
     public Long saveAccount(MobitelAccount account) {
 
         return mobitelDao.save(account);
