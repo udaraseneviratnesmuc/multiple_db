@@ -1,17 +1,18 @@
-package com.hms.beyondm.multidb.dao.impl;
+package com.hms.beyondm.multidb.dao.dialog.impl;
 
 import com.hms.beyondm.multidb.dao.UniversalDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 
-public class UniversalDaoMobitelImpl<T extends Serializable> implements UniversalDao<T> {
+public class UniversalDaoImpl<T extends Serializable> implements UniversalDao<T> {
 
     @Autowired
-    @Qualifier("sessionFactory1")
+    @Qualifier("sessionFactory2")
     protected SessionFactory sessionFactory;
 
     public Long save(T object) {
