@@ -10,7 +10,7 @@ public class DialogAccount implements Serializable{
     private static final long serialVersionUID = 7907557244205936381L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 

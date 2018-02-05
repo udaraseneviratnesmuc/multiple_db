@@ -22,7 +22,7 @@ public class AccountController {
     @RequestMapping(value = "/mobitel", method = RequestMethod.GET)
     public void createMobitelAccount(){
 
-        System.out.println("################ Hit the Controller ##############");
+        System.out.println("################ Hit the Mobitel Controller ##############");
 
         MobitelAccount mobitelAccount = new MobitelAccount();
 
@@ -35,7 +35,7 @@ public class AccountController {
     @RequestMapping(value = "/dialog", method = RequestMethod.GET)
     public void createDialogAccount(){
 
-        System.out.println("################ Hit the Controller ##############");
+        System.out.println("################ Hit the Dialog Controller ##############");
 
         DialogAccount dialogAccount = new DialogAccount();
 
@@ -44,4 +44,5 @@ public class AccountController {
 
         dialogAccountService.saveAccount(dialogAccount);
     }
+
 }
