@@ -17,4 +17,8 @@ public class DialogAccountServiceImpl implements DialogAccountService{
     public Long saveAccount(DialogAccount account) {
         return dialogDao.save(account);
     }
+
+    public DialogAccount findAccountById(Long accountId) {
+        return dialogDao.getAccountById(accountId);
+    }
 }

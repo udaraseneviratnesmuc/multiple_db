@@ -18,5 +18,9 @@ public class MobitelAccountServiceImpl implements MobitelAccountService{
 
         return mobitelDao.save(account);
     }
+
+    public MobitelAccount findAccountById(Long accountId) {
+        return mobitelDao.getAccountById(accountId);
+    }
 }
 
